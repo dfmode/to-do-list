@@ -1,0 +1,80 @@
+.Top {
+    margin-bottom: 2rem;
+}
+
+.PageTitle {
+    display: inline;
+    font-size: 30px;
+    font-weight: 500;
+    color: #505050;
+
+}
+
+.TogglePage {
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 500;
+    color: #505050;
+    opacity: 0.5;
+}
+
+.Input {
+    all: unset;
+    border-bottom: 2px solid #DDDDDD;
+    padding-bottom: 6px;
+}
+
+.Input {
+    all: unset;
+    width: 100%;
+    border-bottom: 2px solid #DDDDDD;
+    padding-bottom: 0.3rem;
+    margin-bottom: 0.3rem;
+}
+
+.InputContainer:not(:last-child) {
+    margin-bottom: 3rem;
+}
+
+.Form {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.LoginBtn:hover {
+    background: #229ED9;
+}
+
+.LoginBtn {
+    all: unset;
+    cursor: pointer;
+    background: #2AABEE;
+    border-radius: 15px;
+    padding: 0.6rem 3rem;
+    margin: 0 auto;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 23px;
+
+    color: #FFFFFF;
+    margin-left: auto;
+    margin-right: 0;
+}
+
+.BtnContainer {
+    display: flex;
+    justify-content: end;
+}
+
+.LoginContainer {
+    margin: 10rem auto;
+    max-width: 60rem;
+    padding: 3rem;
+}
+
+.InvalidDataText {
+    font-size: 0.7rem;
+    opacity: 0.5;
+    color: #F01E2C;
+}

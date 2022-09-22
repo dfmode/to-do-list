@@ -1,24 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { useState, useEffect } from "react";
+import "./App.css";
+import Dashboard from "./components/Dashboard/Dashboard";
+import Login from "./components/Login/Login";
+import Registration from "./components/Registration/Registration";
+
+// TODO: Handle edge cases on registration and login
 
 function App() {
+  const [token, setToken] = useState(
+    localStorage.getItem("token")
+      ? JSON.parse(localStorage.getItem("token")!)
+      : ""
+  );
+
+  const [state, setState] = useState<string>(token ? "dashboard" : "login");
+
+  useEffect(() => {
+    localStorage.setItem("token", JSON.stringify(token));
+  }, [token]);
+
+  if (state == "login") {
+    return <Login setToken={setToken} setState={setState} />;
+  } else if (state == "register") {
+    return <Registration setToken={setToken} setState={setState} />;
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="wrapper">
+      <h1>Application</h1>
+      <Dashboard setState={setState} />
     </div>
   );
 }
