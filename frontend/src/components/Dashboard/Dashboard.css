@@ -1,0 +1,51 @@
+.dashboard__title {
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    font-weight: 500;
+    color: #505050;
+}
+
+.Top {
+    display: flex;
+    align-items: center;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.LogoutBtn:hover {
+    color: #229ED9;
+}
+
+.dashboard__icon {
+    margin-right: 13px;
+}
+
+.LogoutBtn {
+    all: unset;
+    cursor: pointer;
+    background: #FFFFFF;
+    border-radius: 15px;
+
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 23px;
+
+    color: #2AABEE;
+
+}
+
+.logoutBtn__container {
+    display: flex;
+    justify-content: end;
+}
+
+.Dashboard {
+    margin: 0 auto;
+    max-width: 30rem;
+    padding: 3rem;
+}

@@ -1,0 +1,19 @@
+.Task {
+    display: flex;
+    gap: 1rem;
+}
+
+
+.description {
+    flex: 1;
+}
+
+.removeBtn {
+    all: unset;
+    cursor: pointer;
+}
+
+.checkBtn {
+    all: unset;
+    cursor: pointer;
+}

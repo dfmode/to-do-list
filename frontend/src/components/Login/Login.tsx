@@ -1,26 +1,26 @@
-import React from "react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import "./Login.css";
 import { API_URL } from "../../config/config";
+import { useNavigate } from "react-router-dom";
+import { BsFillCalendarCheckFill } from "react-icons/bs";
+import { useAuth } from "../../auth/AuthContext";
 
-async function loginUser(credentials: { username: string; password: string }) {
-  return fetch(`${API_URL}/login`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(credentials),
-  }).then((data) => data.json());
-}
+// async function loginUser(credentials: { username: string; password: string }) {
+//   return fetch(`${API_URL}/login`, {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify(credentials),
+//   }).then((data) => data.json());
+// }
 
-export default function Login({
-  setToken,
-  setState,
-}: {
-  setToken: React.Dispatch<React.SetStateAction<string>>;
-  setState: React.Dispatch<React.SetStateAction<string>>;
-}) {
+export default function Login() {
+  const { login } = useAuth();
+
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -28,17 +28,24 @@ export default function Login({
   } = useForm();
 
   const onSubmit = async (e: any) => {
-    const data = await loginUser({
-      username: username.trim(),
-      password: password.trim(),
-    });
+    // const data = await loginUser({
+    //   username: username.trim(),
+    //   password: password.trim(),
+    // });
+    // if (!data.ok) {
+    //   return;
+    // }
+    // setToken(data.user);
 
-    if (!data.ok) {
-      return;
+    try {
+      await login({
+        username: username.trim(),
+        password: password.trim(),
+      });
+      navigate("/dashboard");
+    } catch {
+    } finally {
     }
-
-    setToken(data.token);
-    setState("dashboard");
   };
 
   const [username, setUserName] = useState<string>("");
@@ -51,8 +58,12 @@ export default function Login({
   return (
     <div className="LoginContainer">
       <div className="Top">
+        <BsFillCalendarCheckFill
+          style={{ color: "#2AABEE" }}
+          className="dashboard__icon"
+        />
         <div className="PageTitle">Login / </div>
-        <a className="TogglePage" onClick={() => setState("register")}>
+        <a className="TogglePage" onClick={() => navigate("/register")}>
           Register
         </a>
       </div>
@@ -64,7 +75,7 @@ export default function Login({
             type="text"
             placeholder="Username"
             {...register("username", {
-              pattern: /^[A-Za-z0-9]{3,20}$/i,
+              pattern: /^[A-Za-z0-9]{3,20}$/g,
               required: true,
             })}
             onChange={(e) => setUserName(e.target.value)}
@@ -80,7 +91,7 @@ export default function Login({
             type="password"
             placeholder="Password"
             {...register("password", {
-              pattern: /^(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9]).{8,20}$/i,
+              pattern: /^(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9]).{8,20}$/g,
               required: true,
             })}
             onChange={(e) => setPassword(e.target.value)}

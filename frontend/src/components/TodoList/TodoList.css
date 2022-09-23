@@ -1,0 +1,29 @@
+.createTaskBtn {
+    all: unset;
+    cursor: pointer;
+}
+
+.createTaskForm {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+    color: #229ED9;
+}
+
+.TaskInput::placeholder {
+    color: #229ED9;
+}
+
+.TaskInput {
+    all: unset;
+
+}
+
+.tasks__container {
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    color: #4E4E4E;
+}
