@@ -45,9 +45,9 @@ export default function Registration() {
         username: username.trim(),
         password: password.trim(),
       });
-      navigate("/dashboard");
+      navigate("/");
     } catch {
-      console.log("REGISTRATION ERROR");
+      alert("Registration failed!");
     } finally {
     }
   };

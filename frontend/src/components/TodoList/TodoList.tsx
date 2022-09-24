@@ -39,10 +39,11 @@ export default function TodoList() {
             Authorization: `Bearer ${token}`,
           },
         }
-      )
+      ).then(() => {
+        setTasks([...tasks, { status: false, description: newTask }]);
+        setNewTask("");
+      })
       .catch();
-    setTasks([...tasks, { status: false, description: newTask }]);
-    setNewTask("");
   };
 
   const deleteTask = (id: string) => {
@@ -52,9 +53,10 @@ export default function TodoList() {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
+      }).then(() => {
+        setTasks((prev: any) => prev.filter((item: any) => item._id !== id));
       })
       .catch();
-    setTasks((prev: any) => prev.filter((item: any) => item._id !== id));
   };
 
   const markTask = (id: string, status: boolean) => {
@@ -68,13 +70,14 @@ export default function TodoList() {
             Authorization: `Bearer ${token}`,
           },
         }
-      )
+      ).then(() => {
+        setTasks((prev: any) =>
+          prev.map((item: any) =>
+            item._id !== id ? item : { ...item, status: !status }
+          )
+        );
+      })
       .catch();
-    setTasks((prev: any) =>
-      prev.map((item: any) =>
-        item._id !== id ? item : { ...item, status: !status }
-      )
-    );
   };
 
   return (

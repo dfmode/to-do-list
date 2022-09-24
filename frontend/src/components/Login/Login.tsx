@@ -42,7 +42,7 @@ export default function Login() {
         username: username.trim(),
         password: password.trim(),
       });
-      navigate("/dashboard");
+      navigate("/");
     } catch {
     } finally {
     }
