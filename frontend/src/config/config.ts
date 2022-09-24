@@ -1,1 +1,1 @@
-export const API_URL = "http://139.177.183.232:3000";
+export const API_URL = "https://clownfish-app-6u8tb.ondigitalocean.app";
