@@ -1,10 +1,16 @@
 import express from "express";
-import { register, login, logout } from "../controllers/controllers.js";
+import c from "../controllers/controllers.js";
 
 const userRouter = express.Router();
+const taskRouter = express.Router();
 
-userRouter.post("/register", register);
-userRouter.post("/login", login);
-userRouter.post("/logout", logout);
+userRouter.post("/register", c.register);
+userRouter.post("/login", c.login);
+userRouter.post("/logout", c.logout);
 
-export default userRouter;
+taskRouter.get("/task", c.getAllTasks);
+taskRouter.post("/task", c.postTask);
+taskRouter.patch("/task/:id", c.patchTask);
+taskRouter.delete("/task/:id", c.deleteTask);
+
+export default {userRouter, taskRouter};
